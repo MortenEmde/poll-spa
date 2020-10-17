@@ -1,0 +1,9 @@
+.create-poll-questions {
+  display: flex;
+  flex-direction: column;
+}
+
+.create-poll-footer {
+  display: flex;
+  flex-direction: row;
+}
