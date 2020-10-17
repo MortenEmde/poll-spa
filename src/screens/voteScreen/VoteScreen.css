@@ -1,0 +1,5 @@
+.vote-screen-form {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}

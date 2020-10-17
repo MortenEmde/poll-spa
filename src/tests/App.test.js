@@ -19,16 +19,4 @@ describe('App.js should', () => {
     const appHeader = screen.getAllByRole('heading');
     expect(appHeader[1]).toHaveTextContent('Create your Poll here.');
   });
-
-  test('render correct vote header', () => {
-    render(<App />);
-    const appHeader = screen.getAllByRole('heading');
-    expect(appHeader[2]).toHaveTextContent('Vote here.');
-  });
-
-  test('render correct results header', () => {
-    render(<App />);
-    const appHeader = screen.getAllByRole('heading');
-    expect(appHeader[3]).toHaveTextContent('View your results here.');
-  });
 });

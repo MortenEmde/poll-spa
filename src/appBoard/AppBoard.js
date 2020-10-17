@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import CreatePoll from '../createPoll/CreatePoll';
+import CreatePollScreen from '../screens/createPollScreen/CreatePollScreen';
+import ResultsScreen from '../screens/resultsScreen/ResultsScreen';
+import VoteScreen from '../screens/voteScreen/VoteScreen';
 import './AppBoard.css';
 
 const pollQuestion = 'What is your favorite animal?';
@@ -26,19 +28,25 @@ function AppBoard() {
   };
 
   const deleteAnswer = (answerToDelete) => {
-    const answerToDeleteIndex = answers.findIndex((answer) => answer.text === answerToDelete);
-    answers.splice(answerToDeleteIndex, 1);
-    setAnswers([...answers]);
+    if (answers.length > 2){
+      const answerToDeleteIndex = answers.findIndex((answer) => answer.text === answerToDelete);
+      answers.splice(answerToDeleteIndex, 1);
+      setAnswers([...answers]);
+    }
   };
 
   const resetPoll = () => {
-    setQuestion(pollQuestion);
-    setAnswers(pollAnswers);
+    setQuestion('What is your favorite animal?');
+    setAnswers([
+      { text: 'Dog', votes: 0 },
+      { text: 'Cat', votes: 0 },
+      { text: 'Bird', votes: 0 },
+    ]);
   };
 
   return (
     <div className="app-board">
-      <CreatePoll
+      <CreatePollScreen
         pollQuestion={question}
         pollAnswers={answers}
         updateQuestion={updateQuestion}
@@ -46,8 +54,8 @@ function AppBoard() {
         deleteAnswer={deleteAnswer}
         resetPoll={resetPoll}
       />
-      <h3>Vote here.</h3>
-      <h3>View your results here.</h3>
+      <VoteScreen pollQuestion={question} pollAnswers={answers} />
+      <ResultsScreen pollQuestion={question} pollAnswers={answers} />
     </div>
   );
 }

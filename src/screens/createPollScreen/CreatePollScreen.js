@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import PollAnswer from '../components/pollAnswer/PollAnswer';
-import './CreatePoll.css';
+import PollAnswer from '../../components/pollAnswer/PollAnswer';
+import './CreatePollScreen.css';
 
-function CreatePoll({
+function CreatePollScreen({
   pollQuestion,
   pollAnswers,
   updateQuestion,
@@ -61,4 +61,4 @@ function CreatePoll({
   );
 }
 
-export default CreatePoll;
+export default CreatePollScreen;
