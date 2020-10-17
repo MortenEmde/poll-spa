@@ -28,10 +28,19 @@ function AppBoard() {
   };
 
   const deleteAnswer = (answerToDelete) => {
-    if (answers.length > 2){
+    if (answers.length > 2) {
       const answerToDeleteIndex = answers.findIndex((answer) => answer.text === answerToDelete);
       answers.splice(answerToDeleteIndex, 1);
       setAnswers([...answers]);
+    }
+  };
+
+  const addVote = (answerVoted) => {
+    if (answerVoted !== '') {
+      const answerToUpdateIndex = answers.findIndex((answer) => answer.text === answerVoted);
+      const updatedAnswers = [...answers];
+      updatedAnswers[answerToUpdateIndex].votes += 1;
+      setAnswers(updatedAnswers);
     }
   };
 
@@ -54,7 +63,7 @@ function AppBoard() {
         deleteAnswer={deleteAnswer}
         resetPoll={resetPoll}
       />
-      <VoteScreen pollQuestion={question} pollAnswers={answers} />
+      <VoteScreen pollQuestion={question} pollAnswers={answers} addVote={addVote} />
       <ResultsScreen pollQuestion={question} pollAnswers={answers} />
     </div>
   );
