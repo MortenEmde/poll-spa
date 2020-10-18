@@ -1,0 +1,15 @@
+.poll-answer {
+  margin: .5rem 0;
+}
+
+.answer-input {
+  width: 32.8rem;
+  margin-right: .5rem;
+}
+
+.answer-btn {
+  padding-top: .3rem;
+  padding-right: 1.1rem;
+  padding-bottom: .4rem;
+  padding-left: .6rem;
+}

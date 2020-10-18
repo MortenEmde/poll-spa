@@ -1,3 +1,13 @@
+html {
+  font-size: 62.5%; /* default 16px * 62.5 = 10px = 1rem */
+}
+
+body {
+  font: 1.6rem Helvetica;
+  margin: 0;
+  background-color: #a2b9bc;
+}
+
 .app {
   text-align: center;
 }

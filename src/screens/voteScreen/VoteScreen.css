@@ -3,3 +3,9 @@
   flex-direction: column;
   text-align: left;
 }
+
+.vote-btn {
+  margin-top: .5rem;
+  padding: .5rem;
+  font-size: 1.6rem;
+}

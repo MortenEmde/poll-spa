@@ -51,7 +51,7 @@ function VoteScreen({ pollQuestion, pollAnswers, addVote }) {
             deleteSelection={deleteSelection}
           />
         ))}
-        <button type="submit" onClick={handleSubmit}>Vote</button>
+        <button type="submit" className="vote-btn" onClick={handleSubmit}>Vote</button>
       </form>
     </div>
   );

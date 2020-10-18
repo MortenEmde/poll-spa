@@ -1,9 +1,39 @@
-.create-poll-answers-container {
+.create-poll-screen {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+}
+
+.question-input{
+  width: 29.5rem;
+  margin-left: .5rem;
+}
+
+.create-poll-answers-list {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  padding: 0;
+}
+
+.add-answer-input {
+  width: 23rem;
+  margin: 0 .5rem;
+}
+
+.add-answer-btn {
+  padding: .5rem;
 }
 
 .create-poll-footer {
   display: flex;
   flex-direction: row;
+  margin-top: .5rem;
+}
+
+.reset-btn {
+  height: 3rem;
+  padding: .5rem;
+  margin-top: 1rem;
+  margin-left: 16.2rem;
 }
