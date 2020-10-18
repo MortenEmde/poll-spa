@@ -19,6 +19,13 @@ function AppBoard() {
     setQuestion(newQuestion);
   };
 
+  const updateAnswer = (previousAnswer, newAnswer) => {
+    const answerToUpdateIndex = answers.findIndex((answer) => answer.text === previousAnswer);
+    const updatedAnswers = [...answers];
+    updatedAnswers[answerToUpdateIndex].text = newAnswer;
+    setAnswers(updatedAnswers);
+  };
+
   const addAnswer = (newAnswer) => {
     const checkForExistingAnswer = answers.find((answer) => answer.text === newAnswer);
     if (newAnswer !== '' && !checkForExistingAnswer && answers.length !== 10) {
@@ -61,6 +68,7 @@ function AppBoard() {
         pollQuestion={question}
         pollAnswers={answers}
         updateQuestion={updateQuestion}
+        updateAnswer={updateAnswer}
         addAnswer={addAnswer}
         deleteAnswer={deleteAnswer}
         resetPoll={resetPoll}

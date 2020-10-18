@@ -6,6 +6,7 @@ function CreatePollScreen({
   pollQuestion,
   pollAnswers,
   updateQuestion,
+  updateAnswer,
   addAnswer,
   deleteAnswer,
   resetPoll,
@@ -16,7 +17,11 @@ function CreatePollScreen({
     updateQuestion(e.target.value);
   };
 
-  const handleChangeAnswer = (e) => {
+  const handleChangeExistingAnswer = (e) => {
+    updateAnswer(e.target.defaultValue, e.target.value);
+  };
+
+  const handleChangeNewAnswer = (e) => {
     setNewAnswer(e.target.value);
   };
 
@@ -40,13 +45,14 @@ function CreatePollScreen({
             answer={answer}
             index={index}
             deleteAnswer={deleteAnswer}
+            handleChangeExistingAnswer={handleChangeExistingAnswer}
           />
         ))}
       </ul>
       <form>
         <label htmlFor="addAnswer">
           Add Answer:
-          <input type="text" name="addAnswer" placeholder="Add another possible answer" value={newAnswer} onChange={handleChangeAnswer} />
+          <input type="text" name="addAnswer" placeholder="Add another possible answer" value={newAnswer} onChange={handleChangeNewAnswer} />
         </label>
         <button type="submit" onClick={handleSubmit}>Add</button>
       </form>
