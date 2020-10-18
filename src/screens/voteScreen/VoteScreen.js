@@ -1,15 +1,39 @@
 import React, { useState } from 'react';
+import VoteOption from '../../components/voteOption/VoteOption';
 import './VoteScreen.css';
 
 function VoteScreen({ pollQuestion, pollAnswers, addVote }) {
-  const [voteSelection, setVoteSelection] = useState('');
+  const [voteSelection, setVoteSelection] = useState([]);
 
-  const onChangeVlaue = (e) => {
-    setVoteSelection(e.target.value);
+  // Add a selection if user ticks option.
+  const addSelection = (selection) => {
+    const newVoteSelection = voteSelection;
+    newVoteSelection.push(selection);
+    setVoteSelection(newVoteSelection);
+  };
+
+  // Delete a selection if user unticks option.
+  const deleteSelection = (selectionToDelete) => {
+    const newVoteSelection = voteSelection;
+    const selectionToRemoveIndex = newVoteSelection.findIndex((selection) => (
+      selection === selectionToDelete
+    ));
+    newVoteSelection.splice(selectionToRemoveIndex, 1);
+    setVoteSelection(newVoteSelection);
+  };
+
+  // Delete an selection if answer is removed by the poll owner before vote is submited.
+  const removeDeletedSelection = (selectionList) => {
+    selectionList.forEach((selection, index) => {
+      if (!pollAnswers.find((pollAnswer) => pollAnswer.text === selection)) {
+        selectionList.splice(index, 1);
+      }
+    });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    removeDeletedSelection(voteSelection);
     addVote(voteSelection);
   };
 
@@ -18,12 +42,14 @@ function VoteScreen({ pollQuestion, pollAnswers, addVote }) {
       {pollQuestion !== ''
         ? <h3>{pollQuestion}</h3>
         : <h3>Remember to add a poll question</h3>}
-      <form className="vote-screen-form" onChange={onChangeVlaue}>
+      <form className="vote-screen-form">
         {pollAnswers.map((answer) => (
-          <label key={answer.text} htmlFor={answer.text}>
-            <input type="radio" id={answer.text} name={pollQuestion} value={answer.text} />
-            {answer.text}
-          </label>
+          <VoteOption
+            key={answer.text}
+            answer={answer}
+            addSelection={addSelection}
+            deleteSelection={deleteSelection}
+          />
         ))}
         <button type="submit" onClick={handleSubmit}>Vote</button>
       </form>

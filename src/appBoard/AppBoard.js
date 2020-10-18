@@ -35,12 +35,14 @@ function AppBoard() {
     }
   };
 
-  const addVote = (answerVoted) => {
-    if (answerVoted !== '') {
-      const answerToUpdateIndex = answers.findIndex((answer) => answer.text === answerVoted);
-      const updatedAnswers = [...answers];
-      updatedAnswers[answerToUpdateIndex].votes += 1;
-      setAnswers(updatedAnswers);
+  const addVote = (answersVoted) => {
+    if (answersVoted !== []) {
+      for (let i = 0; i < answersVoted.length; i += 1) {
+        const answerToUpdateIndex = answers.findIndex((answer) => answer.text === answersVoted[i]);
+        const updatedAnswers = [...answers];
+        updatedAnswers[answerToUpdateIndex].votes += 1;
+        setAnswers(updatedAnswers);
+      }
     }
   };
 
