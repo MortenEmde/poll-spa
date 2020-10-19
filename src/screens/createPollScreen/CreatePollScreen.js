@@ -31,10 +31,10 @@ function CreatePollScreen({
     setNewAnswer('');
   };
 
-  const handleReset = (e) => {
+  const handleReset = () => {
     resetPoll();
     setNewAnswer('');
-  }
+  };
 
   return (
     <div className="create-poll-screen">
@@ -62,10 +62,10 @@ function CreatePollScreen({
         <button type="submit" className="add-answer-btn" onClick={handleSubmit}>Add</button>
         <div className="create-poll-footer">
           <p>
-          {pollAnswers.length}
-          /10 Possible Answers.
+            {pollAnswers.length}
+            /10 Possible Answers.
           </p>
-          <button type="reset" className="reset-btn" onClick={handleReset}>Reset</button>
+          <input type="reset" className="reset-btn" vlaue="Reset" onClick={handleReset} />
         </div>
       </form>
     </div>

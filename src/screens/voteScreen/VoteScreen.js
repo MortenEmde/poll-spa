@@ -45,12 +45,14 @@ function VoteScreen({ pollQuestion, pollAnswers, addVote }) {
       <form className="vote-screen-form">
         {pollAnswers.map((answer) => (
           answer.text !== ''
-          && <VoteOption
+          && (
+            <VoteOption
               key={answer.id}
               answer={answer}
               addSelection={addSelection}
               deleteSelection={deleteSelection}
             />
+          )
         ))}
         <button type="submit" className="vote-btn" onClick={handleSubmit}>Vote</button>
       </form>

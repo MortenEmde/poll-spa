@@ -33,7 +33,7 @@ function AppBoard() {
   const addAnswer = (newAnswer) => {
     const checkForExistingAnswer = answers.find((answer) => answer.text === newAnswer);
     if (newAnswer !== '' && !checkForExistingAnswer && answers.length !== 10) {
-      const newAnswers = [...answers, { text: newAnswer, votes: 0, id: uuidv4()}];
+      const newAnswers = [...answers, { text: newAnswer, votes: 0, id: uuidv4() }];
       setAnswers(newAnswers);
     }
   };
