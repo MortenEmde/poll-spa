@@ -20,9 +20,14 @@ function AppBoard() {
   };
 
   const updateAnswer = (previousAnswer, newAnswer) => {
+    console.log('New', newAnswer)
     const answerToUpdateIndex = answers.findIndex((answer) => answer.text === previousAnswer);
     const updatedAnswers = [...answers];
-    updatedAnswers[answerToUpdateIndex].text = newAnswer;
+    if (!answers.find((answer) => answer.text === newAnswer && newAnswer !== previousAnswer)) {
+      updatedAnswers[answerToUpdateIndex].text = newAnswer;
+    } else {
+      updatedAnswers[answerToUpdateIndex].text = `${newAnswer} !!DUPLICATE!!`;
+    }
     setAnswers(updatedAnswers);
   };
 
