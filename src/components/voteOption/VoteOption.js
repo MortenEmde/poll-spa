@@ -12,8 +12,8 @@ function VoteOption({ answer, addSelection, deleteSelection }) {
 
   return (
     <label htmlFor={answer.text} className="vote-option">
-      <input type="checkbox" className="vote-input" id={answer.text} value={answer.text} onClick={onChangeVlaue} />
-      <p className="vote-text">{answer.text}</p>
+      <input type="checkbox" className="vote-option-input" id={answer.text} value={answer.text} onClick={onChangeVlaue} />
+      <p className="vote-option-text">{answer.text}</p>
     </label>
   );
 }

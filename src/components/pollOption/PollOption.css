@@ -1,13 +1,14 @@
-.poll-answer {
+.poll-option {
   margin: .5rem 0;
 }
 
-.answer-input {
+.poll-option-input {
   width: 32.8rem;
+  padding: .3rem;
   margin-right: .5rem;
 }
 
-.answer-btn {
+.poll-option-btn {
   padding-top: .3rem;
   padding-right: 1.1rem;
   padding-bottom: .4rem;

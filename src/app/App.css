@@ -11,3 +11,8 @@ body {
 .app {
   text-align: center;
 }
+
+.app-header {
+  color: #ffffff;
+  text-shadow: .2rem 0 0 #000000, -.2rem 0 0 #000000, 0 .2rem 0 #000000, 0 -.2rem 0 #000000, .1rem .1rem #000000, -.1rem -.1rem 0 #000000, .1rem -.1rem 0 #000000, -.1rem .1rem 0 #000000;
+}
