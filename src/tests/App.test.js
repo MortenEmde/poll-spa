@@ -7,7 +7,7 @@ import VoteScreen from '../screens/voteScreen/VoteScreen';
 import ResultsScreen from '../screens/resultsScreen/ResultsScreen';
 
 // mockCavas to avoid errorthrow from react-chartjs-2
-HTMLCanvasElement.prototype.getContext = jest.fn()
+HTMLCanvasElement.prototype.getContext = jest.fn();
 
 // default data
 const pollQuestion = '';
@@ -88,7 +88,7 @@ describe('VoteScreen.js should', () => {
   });
 
   test('render correct default header', () => {
-    render(<VoteScreen pollAnswers={pollAnswers} pollQuestion={'My Awesome Header'} />);
+    render(<VoteScreen pollAnswers={pollAnswers} pollQuestion="My Awesome Header" />);
     const appHeader = screen.getByRole('heading');
     expect(appHeader).toHaveTextContent('My Awesome Header');
   });
