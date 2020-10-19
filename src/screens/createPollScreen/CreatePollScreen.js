@@ -13,24 +13,29 @@ function CreatePollScreen({
 }) {
   const [newAnswer, setNewAnswer] = useState('');
 
+  // handles question update to target value
   const handleChangeQuestion = (e) => {
     updateQuestion(e.target.value);
   };
 
+  // handles answer text update to target value
   const handleChangeExistingAnswer = (e) => {
     updateAnswer(e.target.defaultValue, e.target.value);
   };
 
+  // updates new answer state with target value text
   const handleChangeNewAnswer = (e) => {
     setNewAnswer(e.target.value);
   };
 
+  // handles adding new answer to main data array
   const handleSubmit = (e) => {
     e.preventDefault();
     addAnswer(newAnswer);
     setNewAnswer('');
   };
 
+  // handles reset of main data and all input fields
   const handleReset = () => {
     resetPoll();
     setNewAnswer('');
@@ -38,11 +43,19 @@ function CreatePollScreen({
 
   return (
     <div className="create-poll-screen">
-      <h3 className="create-poll-header">Create your Poll here.</h3>
+      <h3 className="create-poll-header">Create your Poll here</h3>
       <form>
         <label htmlFor="question">
           Question:
-          <input type="text" className="question-input" name="question" placeholder="Add Question" maxLength="80" defaultValue={pollQuestion} onChange={handleChangeQuestion} />
+          <input
+            type="text"
+            className="question-input"
+            name="question"
+            placeholder="Add Question"
+            maxLength="80"
+            defaultValue={pollQuestion}
+            onChange={handleChangeQuestion}
+          />
         </label>
         <ul className="create-poll-answers-list">
           {pollAnswers.map((answer, index) => (
@@ -57,7 +70,15 @@ function CreatePollScreen({
         </ul>
         <label htmlFor="addAnswer">
           Add Answer:
-          <input type="text" className="add-answer-input" name="addAnswer" placeholder="Add another possible answer" maxLength="80" value={newAnswer} onChange={handleChangeNewAnswer} />
+          <input
+            type="text"
+            className="add-answer-input"
+            name="addAnswer"
+            placeholder="Add another possible answer"
+            maxLength="80"
+            value={newAnswer}
+            onChange={handleChangeNewAnswer}
+          />
         </label>
         <button type="submit" className="add-answer-btn" onClick={handleSubmit}>Add</button>
         <div className="create-poll-footer">
@@ -65,7 +86,15 @@ function CreatePollScreen({
             {pollAnswers.length}
             /10 Possible Answers.
           </p>
-          <input type="reset" className="reset-btn" vlaue="Reset" onClick={handleReset} />
+          <label htmlFor="reset">
+            <input
+              type="reset"
+              className="reset-btn"
+              name="reset"
+              value="Reset"
+              onClick={handleReset}
+            />
+          </label>
         </div>
       </form>
     </div>
