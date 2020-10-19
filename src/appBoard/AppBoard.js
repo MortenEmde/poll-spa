@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import CreatePollScreen from '../screens/createPollScreen/CreatePollScreen';
 import ResultsScreen from '../screens/resultsScreen/ResultsScreen';
 import VoteScreen from '../screens/voteScreen/VoteScreen';
 import './AppBoard.css';
 
-const pollQuestion = 'What is your favorite animal?';
+const pollQuestion = '';
 const pollAnswers = [
-  { text: 'Dog', votes: 0 },
-  { text: 'Cat', votes: 0 },
-  { text: 'Bird', votes: 0 },
+  { text: '', votes: 0, id: uuidv4() },
+  { text: '', votes: 0, id: uuidv4() },
 ];
 
 function AppBoard() {
@@ -20,7 +20,6 @@ function AppBoard() {
   };
 
   const updateAnswer = (previousAnswer, newAnswer) => {
-    console.log('New', newAnswer)
     const answerToUpdateIndex = answers.findIndex((answer) => answer.text === previousAnswer);
     const updatedAnswers = [...answers];
     if (!answers.find((answer) => answer.text === newAnswer && newAnswer !== previousAnswer)) {
@@ -34,7 +33,7 @@ function AppBoard() {
   const addAnswer = (newAnswer) => {
     const checkForExistingAnswer = answers.find((answer) => answer.text === newAnswer);
     if (newAnswer !== '' && !checkForExistingAnswer && answers.length !== 10) {
-      const newAnswers = [...answers, { text: newAnswer, votes: 0 }];
+      const newAnswers = [...answers, { text: newAnswer, votes: 0, id: uuidv4()}];
       setAnswers(newAnswers);
     }
   };
@@ -59,11 +58,10 @@ function AppBoard() {
   };
 
   const resetPoll = () => {
-    setQuestion('What is your favorite animal?');
+    setQuestion('');
     setAnswers([
-      { text: 'Dog', votes: 0 },
-      { text: 'Cat', votes: 0 },
-      { text: 'Bird', votes: 0 },
+      { text: '', votes: 0, id: uuidv4() },
+      { text: '', votes: 0, id: uuidv4() },
     ]);
   };
 
