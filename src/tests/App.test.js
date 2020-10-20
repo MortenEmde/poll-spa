@@ -272,15 +272,4 @@ describe('ResultsScreen.js should', () => {
     );
     expect(container).not.toBeEmpty();
   });
-
-  // test('render graph component', () => {
-  //   render(<ResultsScreen pollAnswers={pollAnswers} pollQuestion={pollQuestion} />);
-  //   const divs = screen.getAllByRole('generic');
-  //   expect(divs[1]).not.toBeEmpty();
-  // });
 });
-
-/*
-  Test graph renders corectly by default
-  Test graph renders correctly with dynamic input
-*/

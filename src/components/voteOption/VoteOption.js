@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import './VoteOption.css';
 
 function VoteOption({ answer, addSelection, deleteSelection }) {
+  // if box is checked or unchecked, add or remove value to vote selection
   const registerSelcetion = (e) => {
     if (e.target.checked) {
       addSelection(e.target.value);

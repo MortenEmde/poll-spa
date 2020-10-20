@@ -3,12 +3,15 @@ import PropTypes from 'prop-types';
 import { Bar } from 'react-chartjs-2';
 
 function ResultGraph({ pollQuestion, pollAnswers }) {
+
+  // generate lable array with vote counter added to answer text
   const answerLabels = (answers) => {
     const labels = [];
     answers.map((answer) => labels.push(`(${answer.votes}) ${answer.text}`));
     return labels;
   };
 
+  // generate array of votes data
   const answerVotes = (answers) => {
     const votes = [];
     answers.map((answer) => votes.push(answer.votes));

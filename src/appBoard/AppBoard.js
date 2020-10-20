@@ -15,10 +15,12 @@ function AppBoard() {
   const [question, setQuestion] = useState(pollQuestion);
   const [answers, setAnswers] = useState(pollAnswers);
 
+  // update Question state
   const updateQuestion = (newQuestion) => {
     setQuestion(newQuestion);
   };
 
+  // update a existing answer on input field edit
   const updateAnswer = (previousAnswer, newAnswer) => {
     const answerToUpdateIndex = answers.findIndex((answer) => answer.text === previousAnswer);
     const updatedAnswers = [...answers];
@@ -30,6 +32,7 @@ function AppBoard() {
     setAnswers(updatedAnswers);
   };
 
+  // add a new answer to existing answers array
   const addAnswer = (newAnswer) => {
     const checkForExistingAnswer = answers.find((answer) => answer.text === newAnswer);
     if (newAnswer !== '' && !checkForExistingAnswer && answers.length !== 10) {
@@ -38,6 +41,7 @@ function AppBoard() {
     }
   };
 
+  // delete specific answer from answers array
   const deleteAnswer = (answerToDelete) => {
     if (answers.length > 2) {
       const answerToDeleteIndex = answers.findIndex((answer) => answer.text === answerToDelete);
@@ -46,6 +50,7 @@ function AppBoard() {
     }
   };
 
+  // increse votes counter for submitted answers
   const addVote = (answersVoted) => {
     if (answersVoted !== []) {
       for (let i = 0; i < answersVoted.length; i += 1) {
@@ -57,6 +62,7 @@ function AppBoard() {
     }
   };
 
+  // reset poll state
   const resetPoll = () => {
     setQuestion('');
     setAnswers([
