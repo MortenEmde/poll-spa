@@ -9,4 +9,7 @@ The app is divided in three sections:
 * On the final section, the chart will update based on the questions created and the votes that each question got.
 
 ## Live Demo
-You can find a live demo [Here](Fake-URL-as-placeholder.com)
+You can find a live demo [Here](https://the-amazing-poll-app.netlify.app/)
+
+## Preview
+<img src="./public/images/preview.png" alt="app preview" width="1000"/>
