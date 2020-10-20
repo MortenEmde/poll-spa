@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Bar } from 'react-chartjs-2';
 
 function ResultGraph({ pollQuestion, pollAnswers }) {
@@ -58,5 +59,16 @@ function ResultGraph({ pollQuestion, pollAnswers }) {
     />
   );
 }
+
+ResultGraph.propTypes = {
+  pollQuestion: PropTypes.string.isRequired,
+  pollAnswers: PropTypes.arrayOf(
+    PropTypes.shape({
+      text: PropTypes.string.isRequired,
+      votes: PropTypes.number.isRequired,
+      id: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+};
 
 export default ResultGraph;

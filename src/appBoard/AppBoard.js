@@ -49,7 +49,7 @@ function AppBoard() {
   const addVote = (answersVoted) => {
     if (answersVoted !== []) {
       for (let i = 0; i < answersVoted.length; i += 1) {
-        const answerToUpdateIndex = answers.findIndex((answer) => answer.text === answersVoted[i]);
+        const answerToUpdateIndex = answers.findIndex((answer) => answer.id === answersVoted[i]);
         const updatedAnswers = [...answers];
         updatedAnswers[answerToUpdateIndex].votes += 1;
         setAnswers(updatedAnswers);

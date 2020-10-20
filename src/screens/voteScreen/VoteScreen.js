@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import VoteOption from '../../components/voteOption/VoteOption';
 import './VoteScreen.css';
 
@@ -25,7 +26,7 @@ function VoteScreen({ pollQuestion, pollAnswers, addVote }) {
   // Delete an selection if answer is removed by the poll owner before vote is submited.
   const removeDeletedSelection = (selectionList) => {
     selectionList.forEach((selection, index) => {
-      if (!pollAnswers.find((pollAnswer) => pollAnswer.text === selection)) {
+      if (!pollAnswers.find((pollAnswer) => pollAnswer.id === selection)) {
         selectionList.splice(index, 1);
       }
     });
@@ -61,5 +62,17 @@ function VoteScreen({ pollQuestion, pollAnswers, addVote }) {
     </div>
   );
 }
+
+VoteScreen.propTypes = {
+  pollQuestion: PropTypes.string.isRequired,
+  pollAnswers: PropTypes.arrayOf(
+    PropTypes.shape({
+      text: PropTypes.string.isRequired,
+      votes: PropTypes.number.isRequired,
+      id: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+  addVote: PropTypes.func.isRequired,
+};
 
 export default VoteScreen;

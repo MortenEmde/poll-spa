@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import PollAnswer from '../../components/pollOption/PollOption';
 import './CreatePollScreen.css';
 
@@ -100,5 +101,21 @@ function CreatePollScreen({
     </div>
   );
 }
+
+CreatePollScreen.propTypes = {
+  pollQuestion: PropTypes.string.isRequired,
+  pollAnswers: PropTypes.arrayOf(
+    PropTypes.shape({
+      text: PropTypes.string.isRequired,
+      votes: PropTypes.number.isRequired,
+      id: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+  updateQuestion: PropTypes.func.isRequired,
+  updateAnswer: PropTypes.func.isRequired,
+  addAnswer: PropTypes.func.isRequired,
+  deleteAnswer: PropTypes.func.isRequired,
+  resetPoll: PropTypes.func.isRequired,
+};
 
 export default CreatePollScreen;

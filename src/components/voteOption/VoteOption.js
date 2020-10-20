@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './VoteOption.css';
 
 function VoteOption({ answer, addSelection, deleteSelection }) {
-  const onChangeVlaue = (e) => {
+  const registerSelcetion = (e) => {
     if (e.target.checked) {
       addSelection(e.target.value);
     } else {
@@ -17,13 +18,23 @@ function VoteOption({ answer, addSelection, deleteSelection }) {
           type="checkbox"
           className="vote-option-input"
           id={answer.id}
-          value={answer.text}
-          onClick={onChangeVlaue}
+          value={answer.id}
+          onClick={registerSelcetion}
         />
       </label>
       <p className="vote-option-text">{answer.text}</p>
     </li>
   );
 }
+
+VoteOption.propTypes = {
+  answer: PropTypes.shape({
+    text: PropTypes.string.isRequired,
+    votes: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
+  }).isRequired,
+  addSelection: PropTypes.func.isRequired,
+  deleteSelection: PropTypes.func.isRequired,
+};
 
 export default VoteOption;

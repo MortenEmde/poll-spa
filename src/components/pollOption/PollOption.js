@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './PollOption.css';
 
 function PollOption({
@@ -16,7 +17,7 @@ function PollOption({
           placeholder="Add possible answer"
           maxLength="80"
           defaultValue={answer.text}
-          onBlur={handleChangeExistingAnswer}
+          onChange={handleChangeExistingAnswer}
         />
       </label>
       <button type="button" className="poll-option-btn" onClick={() => deleteAnswer(answer.text)}>
@@ -27,5 +28,15 @@ function PollOption({
     </li>
   );
 }
+
+PollOption.propTypes = {
+  answer: PropTypes.shape({
+    text: PropTypes.string.isRequired,
+    votes: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
+  }).isRequired,
+  deleteAnswer: PropTypes.func.isRequired,
+  handleChangeExistingAnswer: PropTypes.func.isRequired,
+};
 
 export default PollOption;
