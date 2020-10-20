@@ -13,6 +13,7 @@ const pollAnswers = [
   { text: '', votes: 0, id: uuidv4() },
   { text: '', votes: 0, id: uuidv4() },
 ];
+const mockFunction = () => {};
 
 // App.js Tests
 describe('App.js should', () => {
@@ -57,19 +58,44 @@ describe('CreatePollScreen.js should', () => {
       <CreatePollScreen
         pollAnswers={pollAnswers}
         pollQuestion={pollQuestion}
+        updateQuestion={mockFunction}
+        updateAnswer={mockFunction}
+        addAnswer={mockFunction}
+        deleteAnswer={mockFunction}
+        resetPoll={mockFunction}
       />,
     );
     expect(container).not.toBeEmpty();
   });
 
   test('render correct main header', () => {
-    render(<CreatePollScreen pollAnswers={pollAnswers} pollQuestion={pollQuestion} />);
+    render(
+      <CreatePollScreen
+        pollAnswers={pollAnswers}
+        pollQuestion={pollQuestion}
+        updateQuestion={mockFunction}
+        updateAnswer={mockFunction}
+        addAnswer={mockFunction}
+        deleteAnswer={mockFunction}
+        resetPoll={mockFunction}
+      />,
+    );
     const appHeader = screen.getByRole('heading');
     expect(appHeader).toHaveTextContent('Create your Poll here');
   });
 
   test('render correct default input fields', () => {
-    render(<CreatePollScreen pollAnswers={pollAnswers} pollQuestion={pollQuestion} />);
+    render(
+      <CreatePollScreen
+        pollAnswers={pollAnswers}
+        pollQuestion={pollQuestion}
+        updateQuestion={mockFunction}
+        updateAnswer={mockFunction}
+        addAnswer={mockFunction}
+        deleteAnswer={mockFunction}
+        resetPoll={mockFunction}
+      />,
+    );
     expect(screen.getByPlaceholderText('Add Question')).toBeInTheDocument();
     expect(screen.getAllByPlaceholderText('Add possible answer')[0]).toBeInTheDocument();
     expect(screen.getAllByPlaceholderText('Add possible answer')[1]).toBeInTheDocument();
@@ -82,7 +108,17 @@ describe('CreatePollScreen.js should', () => {
   });
 
   test('not let input fields accept more than 80 charecters', () => {
-    render(<CreatePollScreen pollAnswers={pollAnswers} pollQuestion={pollQuestion} />);
+    render(
+      <CreatePollScreen
+        pollAnswers={pollAnswers}
+        pollQuestion={pollQuestion}
+        updateQuestion={mockFunction}
+        updateAnswer={mockFunction}
+        addAnswer={mockFunction}
+        deleteAnswer={mockFunction}
+        resetPoll={mockFunction}
+      />,
+    );
     const inputQuestion = screen.getByPlaceholderText('Add Question');
     expect(inputQuestion.maxLength).toBe(80);
 
@@ -95,13 +131,33 @@ describe('CreatePollScreen.js should', () => {
 
   test('correctly update Possible Answers counter', () => {
     const mockAnswers = pollAnswers;
-    render(<CreatePollScreen pollAnswers={[...mockAnswers, { text: 'newAnswer', votes: 0, id: uuidv4() }]} pollQuestion={pollQuestion} />);
+    render(
+      <CreatePollScreen
+        pollAnswers={[...mockAnswers, { text: 'newAnswer', votes: 0, id: uuidv4() }]}
+        pollQuestion={pollQuestion}
+        updateQuestion={mockFunction}
+        updateAnswer={mockFunction}
+        addAnswer={mockFunction}
+        deleteAnswer={mockFunction}
+        resetPoll={mockFunction}
+      />,
+    );
     expect(screen.getByText('3/10 Possible Answers.')).toBeInTheDocument();
   });
 
   test('correctly update answers list when adding new answer', () => {
     const mockAnswers = pollAnswers;
-    render(<CreatePollScreen pollAnswers={[...mockAnswers, { text: 'newAnswer', votes: 0, id: uuidv4() }]} pollQuestion={pollQuestion} />);
+    render(
+      <CreatePollScreen
+        pollAnswers={[...mockAnswers, { text: 'newAnswer', votes: 0, id: uuidv4() }]}
+        pollQuestion={pollQuestion}
+        updateQuestion={mockFunction}
+        updateAnswer={mockFunction}
+        addAnswer={mockFunction}
+        deleteAnswer={mockFunction}
+        resetPoll={mockFunction}
+      />,
+    );
     expect(screen.getAllByPlaceholderText('Add possible answer').length).toBe(3);
   });
 
@@ -116,11 +172,26 @@ describe('CreatePollScreen.js should', () => {
       <CreatePollScreen
         pollAnswers={mockAnswers}
         pollQuestion={pollQuestion}
+        updateQuestion={mockFunction}
+        updateAnswer={mockFunction}
+        addAnswer={mockFunction}
+        deleteAnswer={mockFunction}
+        resetPoll={mockFunction}
       />,
     );
     expect(screen.getAllByPlaceholderText('Add possible answer').length).toBe(4);
     mockAnswers.splice(1, 1);
-    rerender(<CreatePollScreen pollAnswers={mockAnswers} pollQuestion={pollQuestion} />);
+    rerender(
+      <CreatePollScreen
+        pollAnswers={mockAnswers}
+        pollQuestion={pollQuestion}
+        updateQuestion={mockFunction}
+        updateAnswer={mockFunction}
+        addAnswer={mockFunction}
+        deleteAnswer={mockFunction}
+        resetPoll={mockFunction}
+      />,
+    );
     expect(screen.getAllByPlaceholderText('Add possible answer').length).toBe(3);
   });
 });
@@ -132,25 +203,44 @@ describe('VoteScreen.js should', () => {
       <VoteScreen
         pollAnswers={pollAnswers}
         pollQuestion={pollQuestion}
+        addVote={mockFunction}
       />,
     );
     expect(container).not.toBeEmpty();
   });
 
   test('render correct default header', () => {
-    render(<VoteScreen pollAnswers={pollAnswers} pollQuestion={pollQuestion} />);
+    render(
+      <VoteScreen
+        pollAnswers={pollAnswers}
+        pollQuestion={pollQuestion}
+        addVote={mockFunction}
+      />,
+    );
     const appHeader = screen.getByRole('heading');
     expect(appHeader).toHaveTextContent('Remember to add a poll question');
   });
 
   test('render correct default options and vote button', () => {
-    render(<VoteScreen pollAnswers={pollAnswers} pollQuestion={pollQuestion} />);
+    render(
+      <VoteScreen
+        pollAnswers={pollAnswers}
+        pollQuestion={pollQuestion}
+        addVote={mockFunction}
+      />,
+    );
     expect(screen.getByRole('list')).toBeEmpty();
     expect(screen.getByRole('button')).toHaveTextContent('Vote');
   });
 
   test('render correct question as header', () => {
-    render(<VoteScreen pollAnswers={pollAnswers} pollQuestion="My awesome question" />);
+    render(
+      <VoteScreen
+        pollAnswers={pollAnswers}
+        pollQuestion="My awesome question"
+        addVote={mockFunction}
+      />,
+    );
     const appHeader = screen.getByRole('heading');
     expect(appHeader).toHaveTextContent('My awesome question');
   });
@@ -160,7 +250,13 @@ describe('VoteScreen.js should', () => {
       { text: 'Test Option One', votes: 0, id: uuidv4() },
       { text: 'Test Option Two', votes: 0, id: uuidv4() },
     ];
-    render(<VoteScreen pollAnswers={mockAnswers} pollQuestion={pollQuestion} />);
+    render(
+      <VoteScreen
+        pollAnswers={mockAnswers}
+        pollQuestion={pollQuestion}
+        addVote={mockFunction}
+      />,
+    );
     expect(screen.getAllByRole('listitem').length).toBe(2);
   });
 });

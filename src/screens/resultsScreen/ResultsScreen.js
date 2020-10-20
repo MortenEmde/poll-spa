@@ -4,9 +4,22 @@ import './ResultsScreen.css';
 import ResultGraph from '../../components/resultGraph/ResultGraph';
 
 function ResultsScreen({ pollQuestion, pollAnswers }) {
+  const totalVotesCounter = (answers) => {
+    const votesArr = [];
+    answers.map((answer) => votesArr.push(answer.votes));
+    return votesArr.reduce((acc, cur) => acc + cur);
+  };
+
   return (
     <div className="result-screen">
-      <ResultGraph pollQuestion={pollQuestion} pollAnswers={pollAnswers} />
+      <div className="graph-container">
+        <ResultGraph pollQuestion={pollQuestion} pollAnswers={pollAnswers} />
+      </div>
+      <p className="total-votes">
+        Total Votes:
+        &nbsp;
+        {totalVotesCounter(pollAnswers)}
+      </p>
     </div>
   );
 }

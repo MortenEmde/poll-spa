@@ -7,10 +7,12 @@
 div[class$="-screen"] {
   min-width: 38rem;
   max-width: 38rem;
-  min-height: 63rem;
+  min-height: 64rem;
+  min-height: 64rem;
   padding: 2rem;
   margin: 1rem;
   border: 1px solid #000000;
   border-radius: 3rem;
   background-color: #d1e8e2;
+  word-wrap: break-word;
 }

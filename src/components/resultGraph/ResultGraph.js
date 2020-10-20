@@ -5,7 +5,7 @@ import { Bar } from 'react-chartjs-2';
 function ResultGraph({ pollQuestion, pollAnswers }) {
   const answerLabels = (answers) => {
     const labels = [];
-    answers.map((answer) => labels.push(`${answer.text} (${answer.votes})`));
+    answers.map((answer) => labels.push(`(${answer.votes}) ${answer.text}`));
     return labels;
   };
 
@@ -31,13 +31,19 @@ function ResultGraph({ pollQuestion, pollAnswers }) {
       }}
       options={{
         maintainAspectRatio: false,
-        height: 300,
         scales: {
           xAxes: [{
             ticks: {
               autoSkip: false,
               maxRotation: 90,
               minRotation: 90,
+              callback: (label) => {
+                if (label.length > 35) {
+                  const labelTrimmed = label.slice(0, 35);
+                  return `${labelTrimmed}...`;
+                }
+                return label;
+              },
             },
           }],
           yAxes: [{
