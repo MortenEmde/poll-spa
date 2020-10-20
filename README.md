@@ -31,7 +31,7 @@ npm start
 
 ### Run tests on watch
 ```
-npm run test
+npm test
 ```
 
 ## Live Demo

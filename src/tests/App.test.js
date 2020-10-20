@@ -6,6 +6,7 @@ import AppBoard from '../appBoard/AppBoard';
 import CreatePollScreen from '../screens/createPollScreen/CreatePollScreen';
 import VoteScreen from '../screens/voteScreen/VoteScreen';
 import ResultsScreen from '../screens/resultsScreen/ResultsScreen';
+import ResultGraph from '../components/resultGraph/ResultGraph';
 
 // default data
 const pollQuestion = '';
@@ -271,5 +272,33 @@ describe('ResultsScreen.js should', () => {
       />,
     );
     expect(container).not.toBeEmpty();
+  });
+
+  test('render graph component and total votes counter', () => {
+    render(
+      <ResultsScreen
+        pollAnswers={pollAnswers}
+        pollQuestion={pollQuestion}
+      />
+    );
+    const divs = screen.getAllByRole('generic');
+    expect(divs[2]).not.toBeEmpty();
+    expect(screen.getByText('Total Votes: 0')).toBeInTheDocument();
+  });
+
+  test('corectly update total votes counter', () => {
+    const mockAnswers = [
+      { text: 'Test Option One', votes: 5, id: uuidv4() },
+      { text: 'Test Option Two', votes: 12, id: uuidv4() },
+    ];
+    render(
+      <ResultsScreen
+        pollAnswers={mockAnswers}
+        pollQuestion={pollQuestion}
+      />
+    );
+    const divs = screen.getAllByRole('generic');
+    expect(divs[2]).not.toBeEmpty();
+    expect(screen.getByText('Total Votes: 17')).toBeInTheDocument();
   });
 });
