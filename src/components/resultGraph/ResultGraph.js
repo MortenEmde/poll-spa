@@ -21,7 +21,7 @@ function ResultGraph({ pollQuestion, pollAnswers }) {
         datasets: [
           {
             label: pollQuestion,
-            backgroundColor: '#4bc0c0',
+            backgroundColor: '#ffcb9a',
             borderColor: '#000000',
             borderWidth: 1,
             data: answerVotes(pollAnswers),

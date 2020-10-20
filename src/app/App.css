@@ -5,7 +5,7 @@ html {
 body {
   font: 1.6rem Helvetica;
   margin: 0;
-  background-color: #a2b9bc;
+  background-color: #116466;
 }
 
 .app {
@@ -13,6 +13,6 @@ body {
 }
 
 .app-header {
-  color: #ffffff;
+  color: whitesmoke;
   text-shadow: .2rem 0 0 #000000, -.2rem 0 0 #000000, 0 .2rem 0 #000000, 0 -.2rem 0 #000000, .1rem .1rem #000000, -.1rem -.1rem 0 #000000, .1rem -.1rem 0 #000000, -.1rem .1rem 0 #000000;
 }
