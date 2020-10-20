@@ -6,7 +6,6 @@ import AppBoard from '../appBoard/AppBoard';
 import CreatePollScreen from '../screens/createPollScreen/CreatePollScreen';
 import VoteScreen from '../screens/voteScreen/VoteScreen';
 import ResultsScreen from '../screens/resultsScreen/ResultsScreen';
-import ResultGraph from '../components/resultGraph/ResultGraph';
 
 // default data
 const pollQuestion = '';
@@ -279,7 +278,7 @@ describe('ResultsScreen.js should', () => {
       <ResultsScreen
         pollAnswers={pollAnswers}
         pollQuestion={pollQuestion}
-      />
+      />,
     );
     const divs = screen.getAllByRole('generic');
     expect(divs[2]).not.toBeEmpty();
@@ -295,7 +294,7 @@ describe('ResultsScreen.js should', () => {
       <ResultsScreen
         pollAnswers={mockAnswers}
         pollQuestion={pollQuestion}
-      />
+      />,
     );
     const divs = screen.getAllByRole('generic');
     expect(divs[2]).not.toBeEmpty();
