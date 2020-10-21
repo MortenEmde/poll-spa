@@ -20,8 +20,8 @@ function CreatePollScreen({
   };
 
   // handles answer text update to target value
-  const handleChangeExistingAnswer = (e) => {
-    updateAnswer(e.target.defaultValue, e.target.value);
+  const handleChangeExistingAnswer = (e, targetId) => {
+    updateAnswer(e.target.defaultValue, e.target.value, targetId);
   };
 
   // updates new answer state with target value text
@@ -65,7 +65,7 @@ function CreatePollScreen({
               answer={answer}
               index={index}
               deleteAnswer={deleteAnswer}
-              handleChangeExistingAnswer={handleChangeExistingAnswer}
+              handleChangeExistingAnswer={(e) => handleChangeExistingAnswer(e, answer.id)}
             />
           ))}
         </ul>
@@ -77,15 +77,18 @@ function CreatePollScreen({
             name="addAnswer"
             placeholder="Add another possible answer"
             maxLength="80"
+            disabled={pollAnswers.length >= 10}
             value={newAnswer}
             onChange={handleChangeNewAnswer}
           />
         </label>
-        <button type="submit" className="add-answer-btn" onClick={handleSubmit}>Add</button>
+        <button type="submit" className="add-answer-btn" disabled={pollAnswers.length >= 10} onClick={handleSubmit}>
+          Add
+        </button>
         <div className="create-poll-footer">
           <p>
             {pollAnswers.length}
-            /10 Possible Answers.
+            /10 Possible Answers
           </p>
           <label htmlFor="reset">
             <input

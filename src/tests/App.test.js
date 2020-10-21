@@ -103,7 +103,7 @@ describe('CreatePollScreen.js should', () => {
     expect(screen.getAllByRole('button')[1]).toHaveTextContent('❌');
     expect(screen.getByPlaceholderText('Add another possible answer')).toBeInTheDocument();
     expect(screen.getAllByRole('button')[2]).toHaveTextContent('Add');
-    expect(screen.getByText('2/10 Possible Answers.')).toBeInTheDocument();
+    expect(screen.getByText('2/10 Possible Answers')).toBeInTheDocument();
     expect(screen.getAllByRole('button')[3]).toHaveValue('Reset');
   });
 
@@ -142,7 +142,7 @@ describe('CreatePollScreen.js should', () => {
         resetPoll={mockFunction}
       />,
     );
-    expect(screen.getByText('3/10 Possible Answers.')).toBeInTheDocument();
+    expect(screen.getByText('3/10 Possible Answers')).toBeInTheDocument();
   });
 
   test('correctly update answers list when adding new answer', () => {

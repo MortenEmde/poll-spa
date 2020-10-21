@@ -57,7 +57,7 @@ function VoteScreen({ pollQuestion, pollAnswers, addVote }) {
             )
           ))}
         </ul>
-        <button type="submit" className="vote-btn" onClick={handleSubmit}>Vote</button>
+        <button type="submit" className="vote-btn" disabled={pollAnswers.filter((answer) => answer.text !== '').length === 0} onClick={handleSubmit}>Vote</button>
       </form>
     </div>
   );

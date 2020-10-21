@@ -21,10 +21,10 @@ function AppBoard() {
   };
 
   // update a existing answer on input field edit
-  const updateAnswer = (previousAnswer, newAnswer) => {
-    const answerToUpdateIndex = answers.findIndex((answer) => answer.text === previousAnswer);
+  const updateAnswer = (previousAnswer, newAnswer, answerId) => {
+    const answerToUpdateIndex = answers.findIndex((answer) => answer.id === answerId);
     const updatedAnswers = [...answers];
-    if (!answers.find((answer) => answer.text === newAnswer && newAnswer !== previousAnswer)) {
+    if (newAnswer === '' || !answers.find((answer) => answer.text === newAnswer && newAnswer !== previousAnswer)) {
       updatedAnswers[answerToUpdateIndex].text = newAnswer;
     } else {
       updatedAnswers[answerToUpdateIndex].text = `${newAnswer} !!DUPLICATE!!`;
